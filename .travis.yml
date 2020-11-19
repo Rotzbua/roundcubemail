@@ -20,6 +20,7 @@ matrix:
         chrome: stable
     - php: 7.4
     - php: 8.0
+      dist: bionic
 
 cache:
   directories:
