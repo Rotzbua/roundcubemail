@@ -1,6 +1,6 @@
 name: autoreview
 
-on: [push]
+on: [pull_request]
 jobs:
   misspell:
     name: check / misspell
