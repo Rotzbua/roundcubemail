@@ -1,0 +1,27 @@
+name: autoreview
+
+on: [push]
+jobs:
+  misspell:
+    name: check / misspell
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run misspell with reviewdog
+      uses: reviewdog/action-misspell@v1
+  codespell:
+    name: check / codespell # Extended version of misspell.
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: codespell
+      uses: plettich/action-codespell@master
+  alex:
+    name: check / alex # Avoid offensive wording.
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: reviewdog/action-alex@v1
+      with:
+        github_token: ${{ secrets.github_token }}
+        level: warning
